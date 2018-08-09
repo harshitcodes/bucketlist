@@ -56,7 +56,7 @@ class User(db.Model):
             # create the byte string token using the payload and the SECRET key
             jwt_string = jwt.encode(
                 payload,
-                os.getenv('SECRET'),
+                os.getenv("SECRET"),
                 algorithm='HS256'
             )
             return jwt_string
