@@ -8,6 +8,8 @@ from app import db
 from passlib.apps import custom_app_context as pwd_context
 from flask_bcrypt import Bcrypt
 
+SECRET = "some-very-long-string-of-random-characters-CHANGE-TO-YOUR-LIKING"
+
 class User(db.Model):
     """This class defines the users table """
 
@@ -56,7 +58,7 @@ class User(db.Model):
             # create the byte string token using the payload and the SECRET key
             jwt_string = jwt.encode(
                 payload,
-                os.getenv("SECRET"),
+                SECRET,
                 algorithm='HS256'
             )
             return jwt_string
@@ -70,7 +72,7 @@ class User(db.Model):
         """Decodes the access token from the Authorization header."""
         try:
             # try to decode the token using our SECRET variable
-            payload = jwt.decode(token, os.getenv('SECRET'))
+            payload = jwt.decode(token, SECRET)
             return payload['sub']
         except jwt.ExpiredSignatureError:
             # the token is expired, return an error string
