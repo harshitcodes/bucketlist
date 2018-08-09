@@ -8,7 +8,7 @@ from passlib.apps import custom_app_context as pwd_context
 from flask_httpauth import HTTPBasicAuth
 
 # local import
-from instance.config import app_config
+from app.nstance.config import app_config
 
 # initialize sql-alchemy
 db = SQLAlchemy()
