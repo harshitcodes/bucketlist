@@ -26,9 +26,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
-    op.drop_table('ar_internal_metadata')
-    op.drop_table('schema_migrations')
-    op.drop_table('User')
     # ### end Alembic commands ###
 
 
